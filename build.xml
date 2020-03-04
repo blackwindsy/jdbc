@@ -11,12 +11,12 @@
 	<property name="target.name" value="jdbcexec" />
 	<property name="proj.root.dir" value="${basedir}" />
 	<property name="src.dir" value="${proj.root.dir}/src" />
-	<property name="src.main.java.dir" value="${src.dir}/main/java" />
-	<property name="src.main.res.dir" value="${src.dir}/main/resources" />
+	<property name="java.dir" value="${src.dir}/main/java" />
+	<property name="resources.dir" value="${src.dir}/main/resources" />
+	<property name="lib.dir" value="${resources.dir}/lib" />
 	<property name="build.dir" value="${proj.root.dir}/build" />
 	<property name="classes.dir" value="${build.dir}/classes" />
 	<property name="bin.dir" value="${proj.root.dir}/bin" />
-	<property name="lib.dir" value="${proj.root.dir}/lib" />
 	<property name="dist.dir" value="${proj.root.dir}/dist" />
 
 
@@ -57,7 +57,7 @@
 		<echo message="Start time          = ${curtime}" />
 		<echo message="proj.root.dir       = ${proj.root.dir}" />
 		<echo message="src.dir             = ${src.dir}" />
-		<echo message="src.java.dir        = ${src.java.dir}" />
+		<echo message="java.dir            = ${java.dir}" />
 		<echo message="build.dir           = ${build.dir}" />
 		<echo message="classes.dir         = ${classes.dir}" />
 		<echo message="bin.dir             = ${bin.dir}" />
@@ -71,7 +71,7 @@
 		<mkdir dir="${classes.dir}" />
 		<javac destdir="${classes.dir}" fork="true" executable="${proj.jdk.bin}/javac" debug="on" source="${target.jvm}" target="${target.jvm}" deprecation="off" optimize="on" encoding="utf-8">
 			<classpath refid="classpath" />
-			<src path="${src.main.java.dir}" />
+			<src path="${java.dir}" />
 		</javac>
 	</target>
 
@@ -80,7 +80,7 @@
 		<echo message="Packaging ${target.name}.jar file." />
 		<delete dir="${dist.dir}/lib" />
 		<copy todir="${dist.dir}/lib">
-			<fileset dir="${src.main.res.dir}">
+			<fileset dir="${resources.dir}">
 				<include name="*.bat" />
 				<include name="*.sh" />
 				<include name="*.properties" />
