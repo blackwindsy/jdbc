@@ -1,15 +1,15 @@
-JDBC Execution Tool
+# JDBC Execution Tool
  
 Provides JDBC connection test and simple SQL execution.
  
  
-Prerequisites
+## Prerequisites
  
 1. Language: Java (JDK v.7+)
 2. Build tool: Apache Ant (v.1.9+)
  
  
-Build and execution steps
+## Build and execution steps
  
 1. Download source code.
  
@@ -27,3 +27,24 @@ Build and execution steps
  
 7. In command line, execute the run script.
 	run.bat
+
+
+## Build and execution steps for restrictive environment
+If the environment has security policy where full download (especially jar files), you may download source code files selectively, build manually, update files manually, and execute it.
+
+1. Download source code selectively.
+```
+src/main/java/JDBCExec.java
+src/main/resources/jdbc.properties
+src/main/resources/run.bat
+```
+2. Copy JDBC jar file in the same directory
+3. Build code in command line.
+> For example,
+```
+javac -classpath ./sqljdbc.jar JDBCExec.java
+```
+4. Update jdbc.properties to specify proper connection info - driver, credential, etc.
+5. Update run.bat for JDK path, CLASSPATH
+6. Execute run.bat (convert to run.sh for Unix/Linux)
+
